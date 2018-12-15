@@ -1,0 +1,25 @@
+<form [formGroup]="formdata" class="form-group" *ngIf="showform ">
+  <input type="text" class="form-control" formControlName="ID" placeholder="ID" name="ID" [(ngModel)]="Employee.data.sc__sc_employees3__empid5c13365b34841d68042c2f44"><br>
+  <input type="text" class="form-control" formControlName="Name" placeholder="Name" name="Name" [(ngModel)]="Employee.data.sc__sc_employees3__name5c13365b34841d68042c2f48"><br>
+  <input type="text" class="form-control" formControlName="Gender" placeholder="Gender" name="Gender" [(ngModel)]="Employee.data.sc__sc_employees3__gender5c13365b34841d68042c2f4c"><br>
+  <input type="text" class="form-control" formControlName="Mobile" placeholder="Mobile" name="Mobile" [(ngModel)]="Employee.data.sc__sc_employees3__mobile_no_5c13365c34841d68042c2f50"><br>
+  <input type="text" class="form-control" formControlName="Address" placeholder="Address" name="Address" [(ngModel)]="Employee.data.sc__sc_employees3__address5c13365c34841d68042c2f54"><br>
+  <button type="button" class="btn btn-primary" (click)="addEmp(Employee)" [disabled]="formdata.invalid" *ngIf="!showbtn">ADD</button>
+  <button type="button" class="btn btn-primary" (click)="modEmp(Employee)" *ngIf="showbtn">Modify</button>
+  <button type="button" class="btn btn-primary" (click)="cancelForm()" *ngIf="showform">Cancel</button>
+</form>
+<br>
+<button type="button" class="btn btn-primary" (click)="showRegForm()" *ngIf="!showform">Add Employee</button>
+<table class="table table-bordered" *ngIf="showdatails">
+  <tr>
+    <th>EmpID</th>
+    <th>Name</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let employee of employeesData">
+    <td> {{employee.sc__sc_employees3__empid5c13365b34841d68042c2f44}}</td>
+    <td> <a [routerLink]="['empdetails', employee.id]">{{employee.sc__sc_employees3__name5c13365b34841d68042c2f48}}</a></td>
+    <td> <a href="" (click)="!!editEmp(employee)">Edit</a> | <a href="" (click)="!!delEmp(employee)">Delete</a>
+    </td>
+  </tr>
+</table>
